@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bsrl.mapper.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.bsrl.po.UserInfo">
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, user_name, password, real_name, sex, phone, address, company, category,
+    create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user_info
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.bsrl.po.UserInfo" >
+    insert into user_info (user_id, user_name, password, 
+      real_name, sex, phone,
+      address, company, category,
+      create_time, update_time)
+    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{realName,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+      #{address,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR},
+      now(), now())
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bsrl.po.UserInfo" >
+    update user_info
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      update_time = now(),
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bsrl.po.UserInfo" >
+    update user_info
+    set user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      update_time = now()
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <select id="checkUsername" resultType="int" parameterType="string">
+    select count(1) from user_info
+    where user_name = #{username,jdbcType=VARCHAR}
+  </select>
+  <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List" />
+    from user_info
+    where user_name = #{username,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
+  </select>
+  <update id="updatePasswordByUsername" parameterType="map">
+    update user_info
+    set password = #{passwordNew,jdbcType=VARCHAR},
+    update_time = now()
+    where user_name = #{username,jdbcType=VARCHAR}
+  </update>
+  <select id="checkPassword" resultType="int" parameterType="map">
+    select count(1)
+    from user_info
+    where user_id = #{userId,jdbcType=VARCHAR}
+    and password = #{password,jdbcType=VARCHAR}
+  </select>
+  <select id="findUserList" resultMap="BaseResultMap" parameterType="com.bsrl.query.UserInfoQuery">
+    select
+    <include refid="Base_Column_List" />
+    from user_info
+    <where>
+      <if test="name != null and name != ''">
+        and real_name like '%${name}%'
+      </if>
+    </where>
+  </select>
+  <update id="updateByUserName" parameterType="com.bsrl.po.UserInfo" >
+    update user_info
+    set real_name = #{realName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      update_time = now()
+    where user_name = #{userName,jdbcType=VARCHAR}
+  </update>
+</mapper>

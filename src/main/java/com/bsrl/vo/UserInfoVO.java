@@ -18,6 +18,10 @@ public class UserInfoVO {
 
     private String phone;
 
+    private String bankName;
+
+    private String bankAccount;
+
     private String address;
 
     private String company;
@@ -25,6 +29,8 @@ public class UserInfoVO {
     private String category;
 
     private String categoryCn;
+
+    private String remark;
 
     private Date createTime;
 
@@ -132,5 +138,29 @@ public class UserInfoVO {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
+    public String getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(String bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }

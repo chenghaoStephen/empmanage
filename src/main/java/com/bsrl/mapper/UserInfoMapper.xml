@@ -8,14 +8,17 @@
     <result column="real_name" jdbcType="VARCHAR" property="realName" />
     <result column="sex" jdbcType="VARCHAR" property="sex" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="bank_name" jdbcType="VARCHAR" property="bankName" />
+    <result column="bank_account" jdbcType="VARCHAR" property="bankAccount" />
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="company" jdbcType="VARCHAR" property="company" />
     <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List" >
-    user_id, user_name, password, real_name, sex, phone, address, company, category,
+    user_id, user_name, password, real_name, sex, phone, bank_name, bank_account, address, company, category, remark,
     create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -30,12 +33,13 @@
   </delete>
   <insert id="insert" parameterType="com.bsrl.po.UserInfo" >
     insert into user_info (user_id, user_name, password, 
-      real_name, sex, phone,
-      address, company, category,
+      real_name, sex, phone, bank_name, bank_account,
+      address, company, category, remark,
       create_time, update_time)
     values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
       #{realName,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
-      #{address,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR},
+      #{bankName,jdbcType=VARCHAR}, #{bankAccount,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
+      #{company,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR},
       now(), now())
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.bsrl.po.UserInfo" >
@@ -56,6 +60,12 @@
       <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
       </if>
+      <if test="bankName != null">
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        bank_account = #{bankAccount,jdbcType=VARCHAR},
+      </if>
       <if test="address != null">
         address = #{address,jdbcType=VARCHAR},
       </if>
@@ -64,6 +74,9 @@
       </if>
       <if test="category != null">
         category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
       </if>
       update_time = now(),
     </set>
@@ -76,9 +89,12 @@
       real_name = #{realName,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_account = #{bankAccount,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       company = #{company,jdbcType=VARCHAR},
       category = #{category,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
       update_time = now()
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
@@ -104,24 +120,34 @@
     where user_id = #{userId,jdbcType=VARCHAR}
     and password = #{password,jdbcType=VARCHAR}
   </select>
+  <!-- 搜索用户 -->
   <select id="findUserList" resultMap="BaseResultMap" parameterType="com.bsrl.query.UserInfoQuery">
     select
     <include refid="Base_Column_List" />
     from user_info
     <where>
       <if test="name != null and name != ''">
-        and real_name like '%${name}%'
+        and
+        (user_name like '%${name}%'
+        or real_name like '%${name}%'
+        or phone like '%${name}%'
+        or company like '%${name}%'
+        )
       </if>
     </where>
+    order by category asc,user_name asc
   </select>
   <update id="updateByUserName" parameterType="com.bsrl.po.UserInfo" >
     update user_info
     set real_name = #{realName,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_account = #{bankAccount,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       company = #{company,jdbcType=VARCHAR},
       category = #{category,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
       update_time = now()
     where user_name = #{userName,jdbcType=VARCHAR}
   </update>

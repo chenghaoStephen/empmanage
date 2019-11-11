@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<<script>
+    var category = '${sessionScope.currentUser.category}';
+</script>
 <!--Start sidebar-wrapper-->
 <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
     <div class="brand-logo">
@@ -22,7 +25,7 @@
             </ul>
         </div>
     </div>
-    <ul class="sidebar-menu do-nicescrol">
+    <ul class="sidebar-menu do-nicescrol" id="ManagerPannel" style="display:none;">
         <li class="sidebar-header">管理员功能</li>
         <li>
             <a href="/userRlnShow" class="waves-effect">

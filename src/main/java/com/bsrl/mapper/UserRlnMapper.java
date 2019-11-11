@@ -8,6 +8,8 @@ public interface UserRlnMapper {
 
     int deleteByPrimaryKey(String rlnId);
 
+    int deleteByUserId(String userId);
+
     int insert(UserRln record);
 
     UserRln selectByPrimaryKey(String rlnId);
@@ -17,4 +19,6 @@ public interface UserRlnMapper {
     int updateByPrimaryKey(UserRln record);
 
     List<UserRln> findByParUserId(String parUserId);
+
+    UserRln getRlnByUserId(String userId);
 }

@@ -20,6 +20,9 @@
     <link href="assets/css/sidebar-menu.css" rel="stylesheet"/>
     <!-- Custom Style-->
     <link href="assets/css/app-style.css" rel="stylesheet"/>
+    <!--Data Tables -->
+    <link href="assets/plugins/bootstrap-datatable/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/plugins/bootstrap-datatable/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/jquery.orgchart.css">
@@ -28,6 +31,7 @@
     <%@include file="ModifyPassword.jsp"%>
     <%@include file="UserCreateDlg.jsp"%>
     <%@include file="UserEditDlg.jsp"%>
+    <%@include file="UserSelectDlg.jsp"%>
     <style type="text/css">
         .orgchart { background: #f6f9fc; }
         .orgchart td.left, .orgchart td.right, .orgchart td.top { border-color: #aaa; }
@@ -73,13 +77,17 @@
 
             <div class="row">
                 <h5 class="side-user-name" style="margin-top: 10px;margin-left: 30px;">请选择一个节点</h5>
-                <div class="col-6">
+                <div class="col-5">
                     <input type="text" class="form-control" id="selected-node"
                            style="border-color: #2a4888;" readonly="readonly"/>
                 </div>
-                <span class="btn btn-primary btn-xs ml-1" onclick="addnode();">添加子节点</span>
+                <span class="btn btn-primary btn-xs ml-1" onclick="addnewnode();">添加新用户</span>
                 &nbsp;&nbsp;
-                <span class="btn btn-danger btn-xs ml-1" onclick="deletenode();">删除该节点</span>
+                <span class="btn btn-primary btn-xs ml-1" onclick="addnode();">添加已有用户</span>
+                &nbsp;&nbsp;
+                <span class="btn btn-primary btn-xs ml-1" onclick="editnode();">编辑用户</span>
+                &nbsp;&nbsp;
+                <span class="btn btn-danger btn-xs ml-1" onclick="deletenode();">移除用户</span>
             </div>
 
             <div id="chart-container"></div>
@@ -87,7 +95,17 @@
         </div><!-- End container-fluid-->
     </div><!--End content-wrapper-->
 </div><!--End wrapper-->
-<%@include file="footer.jsp"%>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/notiflix-1.3.0.min.js" type="text/javascript"></script>
+<script src="assets/js/common.js"></script>
+<script>
+    $(document).ready(function () {
+        Notiflix.Notify.Init();
+        Notiflix.Report.Init();
+    });
+</script>
 <script type="text/javascript" src="js/jquery.orgchart.js"></script>
 <!-- sidebar-menu js -->
 <script src="assets/js/sidebar-menu.js"></script>
@@ -95,6 +113,11 @@
 <script src="assets/js/app-script.js"></script>
 
 <script src="assets/js/userrlnedit.js"></script>
+<!--Data Tables js-->
+<script src="assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/bootstrap-datatable/js/dataTables.bootstrap4.min.js"></script>
+<script src="assets/plugins/bootstrap-datatable/js/dataTables.buttons.min.js"></script>
+<script src="assets/plugins/bootstrap-datatable/js/buttons.bootstrap4.min.js"></script>
 
 </body>
 </html>

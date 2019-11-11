@@ -1,6 +1,8 @@
 package com.bsrl.service;
 
 import com.bsrl.common.Const;
+import com.bsrl.common.ServerResponse;
+import com.bsrl.mapper.UserInfoMapper;
 import com.bsrl.mapper.UserRlnMapper;
 import com.bsrl.po.UserInfo;
 import com.bsrl.po.UserRln;
@@ -13,6 +15,8 @@ import java.util.*;
 @Service("iUserRlnService")
 public class UserRlnServiceImpl implements IUserRlnService {
 
+    @Autowired
+    private UserInfoMapper userInfoMapper;
     @Autowired
     private UserRlnMapper userRlnMapper;
 
@@ -27,7 +31,11 @@ public class UserRlnServiceImpl implements IUserRlnService {
         Set<String> userIdSet = new HashSet<>();
         userIdSet.add(userInfo.getUserId());
         saveAndFindDownUser(resultMap, userIdSet);
-        return resultMap;
+        // 封装结果树和用户id集合
+        Map<String, Object> rtnResult = new HashMap<>();
+        rtnResult.put("datasource", resultMap);
+        rtnResult.put("userIdSet", userIdSet);
+        return rtnResult;
     }
 
     /**
@@ -62,6 +70,80 @@ public class UserRlnServiceImpl implements IUserRlnService {
             }
             resultMap.put("children", childrenList);
         }
-
     }
+
+    /**
+     * 根据用户Id查找代理Id
+     * @param userId
+     * @return
+     */
+    public String getAgentIdByUserId(String userId) {
+        // 先判断用户身份，如果是代理则直接返回id，如果是客户则取其代理id，其他返回null
+        UserInfo userInfo = userInfoMapper.selectByPrimaryKey(userId);
+        if (userInfo == null || StringUtils.isBlank(userInfo.getCategory())) {
+            return null;
+        }
+        switch (userInfo.getCategory()) {
+            case Const.Role.ROLE_CUSTOMER: {
+                UserRln userRln = userRlnMapper.getRlnByUserId(userId);
+                return userRln.getAgentId();
+            }
+            case Const.Role.ROLE_AGENT: {
+                return userId;
+            }
+            default: {
+                return null;
+            }
+        }
+    }
+
+    /**
+     * 为用户绑定关系
+     * @param userInfo 用户信息
+     * @param userParId 上级用户id
+     * @return
+     */
+    public ServerResponse<String> insertUserRln(UserInfo userInfo, String userParId) {
+        // 先查找数据库中有无该用户的关系，如果有，则更新
+        String userId = userInfo.getUserId();
+        UserRln userRln = userRlnMapper.getRlnByUserId(userId);
+        if (userRln != null) {
+            // 更新用户关系
+            userRln.setParUserId(userParId);
+            userRln.setAgentId(getAgentIdByUserId(userParId));
+            int updCount = userRlnMapper.updateByPrimaryKey(userRln);
+            if (updCount <= 0) {
+                return ServerResponse.createByErrorMessage("更新用户关系失败");
+            }
+        } else {
+            // 新增用户关系
+            UserRln userRlnNew = new UserRln();
+            userRlnNew.setRlnId(UUID.randomUUID().toString().replace("-", ""));
+            userRlnNew.setUserId(userInfo.getUserId());
+            userRlnNew.setParUserId(userParId);
+            userRlnNew.setAgentId(getAgentIdByUserId(userParId));
+            userRlnNew.setRealName(userInfo.getRealName());
+            userRlnNew.setStatus(Const.Status.STATUS_NORMAL);
+            int insertCount = userRlnMapper.insert(userRlnNew);
+            if (insertCount <= 0) {
+                return ServerResponse.createByErrorMessage("新增用户关系失败");
+            }
+        }
+        // 更新成功，返回用户信息
+        return ServerResponse.createBySuccess("操作成功");
+    }
+
+    /**
+     * 根据用户id删除用户关系
+     * @param userId
+     * @return
+     */
+    public ServerResponse<String> deleteByUserId(String userId) {
+        int deleteCount = userRlnMapper.deleteByUserId(userId);
+        if (deleteCount <= 0) {
+            return ServerResponse.createByErrorMessage("删除用户关系失败");
+        }
+        return ServerResponse.createBySuccessMessage("操作成功");
+    }
+
 }

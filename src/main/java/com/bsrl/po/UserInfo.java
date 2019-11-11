@@ -15,6 +15,10 @@ public class UserInfo {
 
     private String phone;
 
+    private String bankName;
+
+    private String bankAccount;
+
     private String address;
 
     private String company;
@@ -24,6 +28,10 @@ public class UserInfo {
     private Date createTime;
 
     private Date updateTime;
+
+    private String remark;
+
+    private String parUserId;
 
     public String getUserId() {
         return userId;
@@ -111,5 +119,37 @@ public class UserInfo {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getParUserId() {
+        return parUserId;
+    }
+
+    public void setParUserId(String parUserId) {
+        this.parUserId = parUserId;
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
+    public String getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(String bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }

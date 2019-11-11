@@ -10,7 +10,6 @@
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/notiflix-1.3.0.min.js" type="text/javascript"></script>
-<script src="assets/js/common.js"></script>
 <script>
     $(document).ready(function () {
         Notiflix.Notify.Init();

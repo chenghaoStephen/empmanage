@@ -159,14 +159,14 @@ function bindDataTable() {
             {"width": "20%", "targets": 4},
             {"width": "10%", "targets": 5},
             {
-            //   指定第四列，从0开始，0表示第一列，1表示第二列……
-            "width": "20%",
-            "targets": 6,
-            "render": function (data, type, row, meta) {
-                var rowIndex = meta.row;//获取到该行的rowIndex
-                var userId = row.userId;
-                return '<span class="btn btn-primary btn-xs ml-3 js-edit" data-id="'+userId+'">编辑</span> <span class="btn btn-info btn-xs ml-3 js-detail" data-id="'+userId+'">详情</span>';
-            }
+                //   指定第四列，从0开始，0表示第一列，1表示第二列……
+                "width": "20%",
+                "targets": 6,
+                "render": function (data, type, row, meta) {
+                    var rowIndex = meta.row;//获取到该行的rowIndex
+                    var userId = row.userId;
+                    return '<span class="btn btn-primary btn-xs ml-3 js-edit" data-id="'+userId+'">编辑</span> <span class="btn btn-info btn-xs ml-3 js-detail" data-id="'+userId+'">详情</span>';
+                }
             }
         ]
     });
@@ -189,9 +189,12 @@ function clickEvent(){
                     $("#UserInfoRealnameShow").val(userDetail.realName);
                     $("#UserInfoSexShow").val(userDetail.sexCn);
                     $("#UserInfoPhoneShow").val(userDetail.phone);
+                    $("#UserInfoBankNameShow").val(userDetail.bankName);
+                    $("#UserInfoBankAccountShow").val(userDetail.bankAccount);
                     $("#UserInfoCompanyShow").val(userDetail.company);
                     $("#UserInfoAddressShow").val(userDetail.address);
                     $("#UserInfoCategoryShow").val(userDetail.categoryCn);
+                    $("#UserInfoRemarkShow").val(userDetail.remark);
                     $("#UserInfoShowModal").modal("show");
                 } else {
                     Notiflix.Notify.Failure(result.msg);
@@ -220,9 +223,12 @@ function clickEvent(){
                         $("#UserEditForm input[type=radio][name=sex][value='1']").prop("checked", true);
                     }
                     $("#UserInfoPhoneEdit").val(userDetail.phone);
+                    $("#UserInfoBankNameEdit").val(userDetail.bankName);
+                    $("#UserInfoBankAccountEdit").val(userDetail.bankAccount);
                     $("#UserInfoCompanyEdit").val(userDetail.company);
                     $("#UserInfoAddressEdit").val(userDetail.address);
                     $("#UserInfoCategoryEdit").val(userDetail.category);
+                    $("#UserInfoRemarkEdit").val(userDetail.remark);
                     $("#UserEditModal").modal("show");
                 } else {
                     Notiflix.Notify.Failure(result.msg);

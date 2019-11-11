@@ -74,6 +74,7 @@
 </div><!--End wrapper-->
 
 <%@include file="footer.jsp"%>
+<script src="assets/js/common.js"></script>
 <!-- sidebar-menu js -->
 <script src="assets/js/sidebar-menu.js"></script>
 <!-- Custom scripts -->

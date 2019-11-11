@@ -9,11 +9,10 @@ import com.bsrl.query.UserInfoQuery;
 import com.bsrl.service.IUserService;
 import com.bsrl.vo.UserInfoPageVO;
 import com.bsrl.vo.UserInfoVO;
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -96,6 +95,7 @@ public class UserController {
         UserInfoVO userInfoVO = new BaseConverter<UserInfo, UserInfoVO>().convert(userInfo, UserInfoVO.class);
         userInfoVO.setSexCn(Const.SEX_MAP.get(userInfoVO.getSex()));
         userInfoVO.setCategoryCn(Const.ROLE_MAP.get(userInfoVO.getCategory()));
+        userInfoVO.setPassword(StringUtils.EMPTY);
         return ServerResponse.createBySuccess(userInfoVO);
     }
 
@@ -140,6 +140,7 @@ public class UserController {
                 UserInfoVO userInfoVO = new BaseConverter<UserInfo, UserInfoVO>().convert(item, UserInfoVO.class);
                 userInfoVO.setSexCn(Const.SEX_MAP.get(userInfoVO.getSex()));
                 userInfoVO.setCategoryCn(Const.ROLE_MAP.get(userInfoVO.getCategory()));
+                userInfoVO.setPassword(StringUtils.EMPTY);
                 resultList.add(userInfoVO);
             });
         }
@@ -166,6 +167,7 @@ public class UserController {
         UserInfoVO userInfoVO = new BaseConverter<UserInfo, UserInfoVO>().convert(userInfo, UserInfoVO.class);
         userInfoVO.setSexCn(Const.SEX_MAP.get(userInfoVO.getSex()));
         userInfoVO.setCategoryCn(Const.ROLE_MAP.get(userInfoVO.getCategory()));
+        userInfoVO.setPassword(StringUtils.EMPTY);
         return ServerResponse.createBySuccess(userInfoVO);
     }
 

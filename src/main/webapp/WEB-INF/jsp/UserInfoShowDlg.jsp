@@ -47,6 +47,20 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-2"><label>开户行</label></div>
+                            <div class="col-8">
+                                <input type="text" class="form-control" id="UserInfoBankNameShow"
+                                       name="bankName" readonly="readonly"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2"><label>银行卡号</label></div>
+                            <div class="col-8">
+                                <input type="text" class="form-control" id="UserInfoBankAccountShow"
+                                       name="bankAccount" readonly="readonly"/>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-2"><label>公司</label></div>
                             <div class="col-8">
                                 <input type="text" class="form-control" id="UserInfoCompanyShow"
@@ -56,7 +70,7 @@
                         <div class="row">
                             <div class="col-2"><label>住址</label></div>
                             <div class="col-8">
-                                <textarea rows="3" class="form-control" id="UserInfoAddressShow"
+                                <textarea rows="2" class="form-control" id="UserInfoAddressShow"
                                           name="address" fixed="true" readonly="readonly"></textarea>
                             </div>
                         </div>
@@ -65,6 +79,13 @@
                             <div class="col-8">
                                 <input type="text" class="form-control" id="UserInfoCategoryShow"
                                        name="category" readonly="readonly"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2"><label>备注</label></div>
+                            <div class="col-8">
+                                <input type="text" class="form-control" id="UserInfoRemarkShow"
+                                       name="remark" readonly="readonly"/>
                             </div>
                         </div>
                     </div>

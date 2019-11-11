@@ -1,5 +1,12 @@
 $(function () {
 
+    // 只有管理员开放编辑权限
+    if (category && category == "1") {
+        $('#ManagerPannel').css('display', 'block');
+    } else {
+        $('#ManagerPannel').css('display', 'none');
+    }
+
     // 关闭个人信息界面时，重置
     $("#UserInfoShowModal").on('hide.bs.modal', function () {
         resetUserInfo();
@@ -64,9 +71,12 @@ function showUserInfo() {
                 $("#UserInfoRealnameShow").val(userInfo.realName);
                 $("#UserInfoSexShow").val(userInfo.sexCn);
                 $("#UserInfoPhoneShow").val(userInfo.phone);
+                $("#UserInfoBankNameShow").val(userInfo.bankName);
+                $("#UserInfoBankAccountShow").val(userInfo.bankAccount);
                 $("#UserInfoCompanyShow").val(userInfo.company);
                 $("#UserInfoAddressShow").val(userInfo.address);
                 $("#UserInfoCategoryShow").val(userInfo.categoryCn);
+                $("#UserInfoRemarkShow").val(userInfo.remark);
                 $("#UserInfoShowModal").modal("show");
             } else {
                 Notiflix.Notify.Failure(result.msg);
@@ -84,9 +94,12 @@ function resetUserInfo() {
     $("#UserInfoRealnameShow").val('');
     $("#UserInfoSexShow").val('');
     $("#UserInfoPhoneShow").val('');
+    $("#UserInfoBankNameShow").val('');
+    $("#UserInfoBankAccountShow").val('');
     $("#UserInfoCompanyShow").val('');
     $("#UserInfoAddressShow").val('');
     $("#UserInfoCategoryShow").val('');
+    $("#UserInfoRemarkShow").val('');
 }
 
 // 弹出修改密码界面

@@ -23,6 +23,10 @@
     delete from user_rln
     where rln_id = #{rlnId,jdbcType=VARCHAR}
   </delete>
+  <delete id="deleteByUserId" parameterType="java.lang.String" >
+    delete from user_rln
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
   <insert id="insert" parameterType="com.bsrl.po.UserRln" >
     insert into user_rln (rln_id, user_id, par_user_id, 
       real_name, agent_id, status
@@ -66,5 +70,11 @@
       rln.rln_id, rln.user_id, rln.par_user_id, info.real_name, rln.agent_id, rln.status, info.category
       from user_rln rln left join user_info info on rln.user_id=info.user_id
       where rln.par_user_id = #{parUserId,jdbcType=VARCHAR}
+  </select>
+  <select id="getRlnByUserId" parameterType="string" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from user_rln
+      where user_id = #{userId,jdbcType=VARCHAR}
   </select>
 </mapper>

@@ -1,3 +1,33 @@
+$(function() {
+    $("#TopBarTitle").text("查看用户关系");
+    // 获取用户关系图数据
+    $.ajax({
+        type: "GET",
+        url: "/userrln/findByParUserId",
+        data: {},
+        success: function (result) {
+            if (result.status == '0') {
+                var datasource = result.data.datasource;
+                refreshRlnDiagram(datasource);
+            } else {
+                Notiflix.Notify.Failure(result.msg);
+            }
+        },
+        error: function (e) {
+            Notiflix.Notify.Failure("获取用户关系失败");
+        }
+    });
+
+    $('#key-word').on('keyup', function(event) {
+        if (event.which === 13) {
+            filterNodes(this.value);
+        } else if (event.which === 8 && this.value.length === 0) {
+            clearFilterResult();
+        }
+    });
+
+});
+
 function filterNodes(keyWord) {
     if(!keyWord.length) {
         Notiflix.Notify.Warning("请输入搜索内容");
@@ -37,35 +67,6 @@ function clearFilterResult() {
         .end().find('.slide-up, .slide-left, .slide-right').removeClass('slide-up slide-right slide-left');
     $('#key-word').val("");
 }
-$(function() {
-    $("#TopBarTitle").text("查看用户关系");
-    // 获取用户关系图数据
-    $.ajax({
-        type: "GET",
-        url: "/userrln/findByParUserId",
-        data: {},
-        success: function (result) {
-            if (result.status == '0') {
-                var datasource = result.data;
-                refreshRlnDiagram(datasource);
-            } else {
-                Notiflix.Notify.Failure(result.msg);
-            }
-        },
-        error: function (e) {
-            Notiflix.Notify.Failure("获取用户关系失败");
-        }
-    });
-
-    $('#key-word').on('keyup', function(event) {
-        if (event.which === 13) {
-            filterNodes(this.value);
-        } else if (event.which === 8 && this.value.length === 0) {
-            clearFilterResult();
-        }
-    });
-
-});
 
 function refreshRlnDiagram(datasource) {
     var oc = $('#chart-container').orgchart({
@@ -96,9 +97,12 @@ function refreshRlnDiagram(datasource) {
                     $("#UserInfoRealnameShow").val(userDetail.realName);
                     $("#UserInfoSexShow").val(userDetail.sexCn);
                     $("#UserInfoPhoneShow").val(userDetail.phone);
+                    $("#UserInfoBankNameShow").val(userDetail.bankName);
+                    $("#UserInfoBankAccountShow").val(userDetail.bankAccount);
                     $("#UserInfoCompanyShow").val(userDetail.company);
                     $("#UserInfoAddressShow").val(userDetail.address);
                     $("#UserInfoCategoryShow").val(userDetail.categoryCn);
+                    $("#UserInfoRemarkShow").val(userDetail.remark);
                     $("#UserInfoShowModal").modal("show");
                 } else {
                     Notiflix.Notify.Failure(result.msg);

@@ -15,14 +15,14 @@
                             <div class="col-2"><label>用户名</label></div>
                             <div class="col-8">
                                 <input type="text" class="form-control" id="UserInfoUsernameCreate"
-                                       name="userName"/>
+                                       name="userName" maxlength="20"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-2"><label>真实姓名</label></div>
                             <div class="col-8">
                                 <input type="text" class="form-control" id="UserInfoRealnameCreate"
-                                       name="realName"/>
+                                       name="realName" maxlength="20"/>
                             </div>
                         </div>
                         <div class="row">
@@ -39,35 +39,35 @@
                             <div class="col-2"><label>电话</label></div>
                             <div class="col-8">
                                 <input type="text" class="form-control" id="UserInfoPhoneCreate"
-                                       name="phone"/>
+                                       name="phone" maxlength="20"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-2"><label>开户行</label></div>
                             <div class="col-8">
                                 <input type="text" class="form-control" id="UserInfoBankNameCreate"
-                                       name="bankName"/>
+                                       name="bankName" maxlength="20"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-2"><label>银行卡号</label></div>
                             <div class="col-8">
                                 <input type="text" class="form-control" id="UserInfoBankAccountCreate"
-                                       name="bankAccount"/>
+                                       name="bankAccount" maxlength="30"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-2"><label>公司</label></div>
                             <div class="col-8">
                                 <input type="text" class="form-control" id="UserInfoCompanyCreate"
-                                       name="company"/>
+                                       name="company" maxlength="20"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-2"><label>住址</label></div>
                             <div class="col-8">
                                 <textarea rows="2" class="form-control" id="UserInfoAddressCreate"
-                                          name="address" fixed="true"></textarea>
+                                          name="address" fixed="true" maxlength="35"></textarea>
                             </div>
                         </div>
                         <div class="row">
@@ -85,7 +85,7 @@
                             <div class="col-2"><label>备注</label></div>
                             <div class="col-8">
                                 <input type="text" class="form-control" id="UserInfoRemarkCreate"
-                                       name="remark"/>
+                                       name="remark" maxlength="20"/>
                             </div>
                         </div>
                     </div>

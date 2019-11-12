@@ -72,13 +72,13 @@
         <div class="container-fluid">
 
             <div class="row">
-                <div class="offset-2 col-6">
+                <div id="ShowSearchInput" class="offset-2 col-6">
                     <input type="text" class="form-control" id="key-word"
                            style="border-color: #2a4888;" placeholder="请输入关键字"/>
                 </div>
-                <span class="btn btn-primary btn-xs ml-1" onclick="filterNodes($('#key-word').val());">搜索</span>
+                <span id="ShowSearchBtn" class="btn btn-primary btn-xs ml-1" onclick="filterNodes($('#key-word').val());">搜索</span>
                 &nbsp;&nbsp;
-                <span class="btn btn-light btn-xs ml-1" onclick="clearFilterResult();">重置</span>
+                <span id="ShowResetBtn" class="btn btn-light btn-xs ml-1" onclick="clearFilterResult();">重置</span>
             </div>
 
             <div id="chart-container"></div>

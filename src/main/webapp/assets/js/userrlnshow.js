@@ -1,5 +1,13 @@
 $(function() {
     $("#TopBarTitle").text("查看用户关系");
+    // 手机端处理
+    if (!IsPC()) {
+        $("#ShowSearchInput").removeClass("offset-2").removeClass("col-6").addClass("offset-1").addClass("col-5");
+        $("#ShowSearchBtn").removeClass("btn-xs").removeClass("ml-1").addClass("col-2");
+        $("#ShowResetBtn").removeClass("btn-xs").removeClass("ml-1").addClass("col-2");
+        $("#ShowSearchBtn").css("padding","9px 5px");
+        $("#ShowResetBtn").css("padding","9px 5px");
+    }
     // 获取用户关系图数据
     $.ajax({
         type: "GET",

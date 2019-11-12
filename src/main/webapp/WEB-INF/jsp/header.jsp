@@ -10,4 +10,12 @@
 <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/notiflix-1.3.0.min.css">
-
+<style>
+    table.dataTable {
+        table-layout: fixed;
+    }
+    table.dataTable th, table.dataTable td{
+        white-space: normal !important;
+        word-break: break-all;
+    }
+</style>

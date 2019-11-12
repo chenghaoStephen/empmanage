@@ -28,24 +28,24 @@ CREATE TABLE `user_info` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `user_info` VALUES ('1', 'wangliang', 'C6B57E47569E3F27D35B1877B6687029', '王亮', '1', '11111111111', null, null, '中商环宇', '北京市大兴区绿地缤纷城', '1', null, now(), now());
-INSERT INTO `user_info` VALUES ('2', 'yuangong1', 'A', '员工A', '1', '11111111112', null, null, '中商环宇', '北京市大兴区绿地缤纷城', '2', null, now(), now());
-INSERT INTO `user_info` VALUES ('3', 'yuangong2', 'A', '员工B', '2', '11111111113', null, null, '中商环宇', '北京市大兴区绿地缤纷城', '2', null, now(), now());
-INSERT INTO `user_info` VALUES ('4', 'yuangong3', 'A', '员工C', '1', '11111111114', null, null, '中商环宇', '北京市大兴区绿地缤纷城', '2', null, now(), now());
-INSERT INTO `user_info` VALUES ('5', 'daili1', 'A', '代理A', '1', '11111111115', null, null, null, null, '3', null, now(), now());
-INSERT INTO `user_info` VALUES ('6', 'daili2', 'A', '代理B', '1', '11111111116', null, null, null, null, '3', null, now(), now());
-INSERT INTO `user_info` VALUES ('7', 'daili3', 'A', '代理C', '1', '11111111117', null, null, null, null, '3', null, now(), now());
-INSERT INTO `user_info` VALUES ('8', 'daili4', 'A', '代理D', '2', '11111111118', null, null, null, null, '3', null, now(), now());
-INSERT INTO `user_info` VALUES ('9', 'daili5', 'A', '代理E', '1', '11111111119', null, null, null, null, '3', null, now(), now());
-INSERT INTO `user_info` VALUES ('10', 'kehu1', 'A', '客户A', '1', '11111111120', null, null, null, null, '4', null, now(), now());
-INSERT INTO `user_info` VALUES ('11', 'kehu2', 'A', '客户B', '2', '11111111120', null, null, null, null, '4', null, now(), now());
-INSERT INTO `user_info` VALUES ('12', 'kehu3', 'A', '客户C', '1', '11111111120', null, null, null, null, '4', null, now(), now());
-INSERT INTO `user_info` VALUES ('13', 'kehu4', 'A', '客户D', '1', '11111111120', null, null, null, null, '4', null, now(), now());
-INSERT INTO `user_info` VALUES ('14', 'kehu5', 'A', '客户E', '1', '11111111120', null, null, null, null, '4', null, now(), now());
-INSERT INTO `user_info` VALUES ('15', 'kehu6', 'A', '客户F', '2', '11111111120', null, null, null, null, '4', null, now(), now());
-INSERT INTO `user_info` VALUES ('16', 'kehu7', 'A', '客户G', '2', '11111111120', null, null, null, null, '4', null, now(), now());
-INSERT INTO `user_info` VALUES ('17', 'kehu8', 'A', '客户H', '1', '11111111120', null, null, null, null, '4', null, now(), now());
-INSERT INTO `user_info` VALUES ('18', 'kehu9', 'A', '客户I', '1', '11111111120', null, null, null, null, '4', null, now(), now());
-INSERT INTO `user_info` VALUES ('19', 'kehu10', 'A', '客户J', '1', '11111111120', null, null, null, null, '4', null, now(), now());
+INSERT INTO `user_info` VALUES ('2', 'yuangong1', 'C6B57E47569E3F27D35B1877B6687029', '员工A', '1', '11111111112', null, null, '中商环宇', '北京市大兴区绿地缤纷城', '2', null, now(), now());
+INSERT INTO `user_info` VALUES ('3', 'yuangong2', 'C6B57E47569E3F27D35B1877B6687029', '员工B', '2', '11111111113', null, null, '中商环宇', '北京市大兴区绿地缤纷城', '2', null, now(), now());
+INSERT INTO `user_info` VALUES ('4', 'yuangong3', 'C6B57E47569E3F27D35B1877B6687029', '员工C', '1', '11111111114', null, null, '中商环宇', '北京市大兴区绿地缤纷城', '2', null, now(), now());
+INSERT INTO `user_info` VALUES ('5', 'daili1', 'C6B57E47569E3F27D35B1877B6687029', '代理A', '1', '11111111115', null, null, null, null, '3', null, now(), now());
+INSERT INTO `user_info` VALUES ('6', 'daili2', 'C6B57E47569E3F27D35B1877B6687029', '代理B', '1', '11111111116', null, null, null, null, '3', null, now(), now());
+INSERT INTO `user_info` VALUES ('7', 'daili3', 'C6B57E47569E3F27D35B1877B6687029', '代理C', '1', '11111111117', null, null, null, null, '3', null, now(), now());
+INSERT INTO `user_info` VALUES ('8', 'daili4', 'C6B57E47569E3F27D35B1877B6687029', '代理D', '2', '11111111118', null, null, null, null, '3', null, now(), now());
+INSERT INTO `user_info` VALUES ('9', 'daili5', 'C6B57E47569E3F27D35B1877B6687029', '代理E', '1', '11111111119', null, null, null, null, '3', null, now(), now());
+INSERT INTO `user_info` VALUES ('10', 'kehu1', 'C6B57E47569E3F27D35B1877B6687029', '客户A', '1', '11111111120', null, null, null, null, '4', null, now(), now());
+INSERT INTO `user_info` VALUES ('11', 'kehu2', 'C6B57E47569E3F27D35B1877B6687029', '客户B', '2', '11111111120', null, null, null, null, '4', null, now(), now());
+INSERT INTO `user_info` VALUES ('12', 'kehu3', 'C6B57E47569E3F27D35B1877B6687029', '客户C', '1', '11111111120', null, null, null, null, '4', null, now(), now());
+INSERT INTO `user_info` VALUES ('13', 'kehu4', 'C6B57E47569E3F27D35B1877B6687029', '客户D', '1', '11111111120', null, null, null, null, '4', null, now(), now());
+INSERT INTO `user_info` VALUES ('14', 'kehu5', 'C6B57E47569E3F27D35B1877B6687029', '客户E', '1', '11111111120', null, null, null, null, '4', null, now(), now());
+INSERT INTO `user_info` VALUES ('15', 'kehu6', 'C6B57E47569E3F27D35B1877B6687029', '客户F', '2', '11111111120', null, null, null, null, '4', null, now(), now());
+INSERT INTO `user_info` VALUES ('16', 'kehu7', 'C6B57E47569E3F27D35B1877B6687029', '客户G', '2', '11111111120', null, null, null, null, '4', null, now(), now());
+INSERT INTO `user_info` VALUES ('17', 'kehu8', 'C6B57E47569E3F27D35B1877B6687029', '客户H', '1', '11111111120', null, null, null, null, '4', null, now(), now());
+INSERT INTO `user_info` VALUES ('18', 'kehu9', 'C6B57E47569E3F27D35B1877B6687029', '客户I', '1', '11111111120', null, null, null, null, '4', null, now(), now());
+INSERT INTO `user_info` VALUES ('19', 'kehu10', 'C6B57E47569E3F27D35B1877B6687029', '客户J', '1', '11111111120', null, null, null, null, '4', null, now(), now());
 COMMIT;
 
 -- ----------------------------

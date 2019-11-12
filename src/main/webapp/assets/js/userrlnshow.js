@@ -84,9 +84,12 @@ function refreshRlnDiagram(datasource) {
         'zoom': true
     });
 
-    oc.$chartContainer.on('touchmove', function(event) {
-        event.preventDefault();
-    });
+    $('.orgchart').find('tr').removeClass('hidden')
+        .find('td').removeClass('hidden')
+        .find('.node .edge').addClass('hidden');
+    // oc.$chartContainer.on('touchmove', function(event) {
+    //     event.preventDefault();
+    // });
 
     oc.$chartContainer.on('click', '.node', function() {
         var $this = $(this);

@@ -88,14 +88,14 @@
 </div><!--End wrapper-->
 
 <%@include file="footer.jsp"%>
-<script src="assets/js/common.js"></script>
+<script src="assets/js/common.js?version=20191112"></script>
 <script type="text/javascript" src="js/jquery.orgchart.js"></script>
 <!-- sidebar-menu js -->
 <script src="assets/js/sidebar-menu.js"></script>
 <!-- Custom scripts -->
 <script src="assets/js/app-script.js"></script>
 
-<script src="assets/js/userrlnshow.js"></script>
+<script src="assets/js/userrlnshow.js?version=20191112"></script>
 
 </body>
 </html>

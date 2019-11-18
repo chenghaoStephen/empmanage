@@ -157,6 +157,20 @@ function addnewnode() {
         Notiflix.Notify.Warning("请选择一个节点");
         return;
     }
+    // 只有管理员能新建所有身份的用户，其他用户只能新建 代理/客户
+    if (category && category == "1") {
+        $('#UserInfoCategoryCreate').empty();
+        var str = "<option value='1'>管理员</option>";
+        str += "<option value='2'>员工</option>";
+        str += "<option value='3'>代理</option>";
+        str += "<option value='4'>客户</option>";
+        $('#UserInfoCategoryCreate').html(str);
+    } else {
+        $('#UserInfoCategoryCreate').empty();
+        str += "<option value='3'>代理</option>";
+        str += "<option value='4'>客户</option>";
+        $('#UserInfoCategoryCreate').html(str);
+    }
     // 弹出新建用户弹窗
     $("#UserCreateModal").modal("show");
 }
@@ -249,6 +263,27 @@ function editnode() {
                 $("#UserInfoBankAccountEdit").val(userDetail.bankAccount);
                 $("#UserInfoCompanyEdit").val(userDetail.company);
                 $("#UserInfoAddressEdit").val(userDetail.address);
+                // 只有管理员能新建所有身份的用户，其他用户只能新建 代理/客户
+                if (category && category == "1") {
+                    $('#UserInfoCategoryEdit').empty();
+                    var str = "<option value='1'>管理员</option>";
+                    str += "<option value='2'>员工</option>";
+                    str += "<option value='3'>代理</option>";
+                    str += "<option value='4'>客户</option>";
+                    $('#UserInfoCategoryEdit').html(str);
+                    $("#UserInfoCategoryEdit").removeAttr("disabled");
+                } else {
+                    // 不能改变员工类别，代理/客户可切换
+                    if (userDetail.category && userDetail.category == "2") {
+                        $("#UserInfoCategoryEdit").attr("disabled","disabled");
+                    } else {
+                        $('#UserInfoCategoryEdit').empty();
+                        str += "<option value='3'>代理</option>";
+                        str += "<option value='4'>客户</option>";
+                        $('#UserInfoCategoryEdit').html(str);
+                        $("#UserInfoCategoryEdit").removeAttr("disabled");
+                    }
+                }
                 $("#UserInfoCategoryEdit").val(userDetail.category);
                 $("#UserInfoRemarkEdit").val(userDetail.remark);
                 $("#UserEditModal").modal("show");
@@ -437,5 +472,6 @@ function getQueryCondition(data) {
     param.length = data.length;
     param.draw = data.draw;
     param.name = $("#SearchName").val();
+    param.type = '2';//只查询没有关系的数据
     return param;
 }

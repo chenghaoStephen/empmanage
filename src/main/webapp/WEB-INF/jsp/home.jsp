@@ -90,7 +90,7 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/notiflix-1.3.0.min.js" type="text/javascript"></script>
-<script src="assets/js/common.js?version=20191112"></script>
+<script src="assets/js/common.js?version=20191119"></script>
 <script>
     $(document).ready(function () {
         Notiflix.Notify.Init();
@@ -103,7 +103,7 @@
 <!-- Custom scripts -->
 <script src="assets/js/app-script.js"></script>
 
-<script src="assets/js/userrlnshow.js?version=20191112"></script>
+<script src="assets/js/userrlnshow.js?version=20191119"></script>
 
 </body>
 </html>

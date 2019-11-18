@@ -1,5 +1,6 @@
 package com.bsrl.service;
 
+import com.bsrl.common.Const;
 import com.bsrl.common.ServerResponse;
 import com.bsrl.mapper.UserInfoMapper;
 import com.bsrl.po.UserInfo;
@@ -11,6 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -102,10 +104,16 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public PageInfo<UserInfo> findUserList(UserInfoQuery userInfoQuery) {
+    public PageInfo<UserInfo> findUserList(UserInfoQuery userInfoQuery, UserInfo userInfo) {
         int pageNum = userInfoQuery.getStart()/userInfoQuery.getLength() + 1;
         PageHelper.startPage(pageNum, userInfoQuery.getLength());
-        List<UserInfo> userInfoList = userInfoMapper.findUserList(userInfoQuery);
+        userInfoQuery.setCategory(userInfo.getCategory());
+        List<UserInfo> userInfoList = new ArrayList<>();
+        // 只有管理员和员工可以查看用户列表
+        if (Const.Role.ROLE_ADMIN.equals(userInfo.getCategory())
+            || Const.Role.ROLE_EMPLOYEE.equals(userInfo.getCategory())) {
+            userInfoList = userInfoMapper.findUserList(userInfoQuery);
+        }
         PageInfo<UserInfo> pageInfo = new PageInfo<UserInfo>(userInfoList);
         return pageInfo;
     }

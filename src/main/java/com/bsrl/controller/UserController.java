@@ -131,8 +131,9 @@ public class UserController {
 
     @RequestMapping(value = "findUserList", method = RequestMethod.POST)
     @ResponseBody
-    public UserInfoPageVO findUserList(UserInfoQuery userInfoQuery) {
-        PageInfo<UserInfo> pageInfo = iUserService.findUserList(userInfoQuery);
+    public UserInfoPageVO findUserList(UserInfoQuery userInfoQuery, HttpSession session) {
+        UserInfo userInfo = (UserInfo)session.getAttribute(Const.CURRENT_USER);
+        PageInfo<UserInfo> pageInfo = iUserService.findUserList(userInfoQuery, userInfo);
         List<UserInfo> userInfoList = pageInfo.getList();
         List<UserInfoVO> resultList = new ArrayList<>();
         if (userInfoList != null && userInfoList.size() > 0) {

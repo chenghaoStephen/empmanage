@@ -21,7 +21,7 @@ public interface IUserService {
 
     ServerResponse<UserInfo> updateUserInformation(UserInfo userInfo);
 
-    PageInfo<UserInfo> findUserList(UserInfoQuery userInfoQuery);
+    PageInfo<UserInfo> findUserList(UserInfoQuery userInfoQuery, UserInfo userInfo);
 
     UserInfo selectByPrimaryKey(String userId);
 }

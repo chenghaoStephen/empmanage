@@ -1,7 +1,7 @@
 $(function () {
 
-    // 只有管理员开放编辑权限
-    if (category && category == "1") {
+    // 只有管理员/员工，开放编辑权限
+    if (category && (category == "1" || category == "2")) {
         $('#ManagerPannel').css('display', 'block');
     } else {
         $('#ManagerPannel').css('display', 'none');

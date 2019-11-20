@@ -85,7 +85,6 @@
   <update id="updateByPrimaryKey" parameterType="com.bsrl.po.UserInfo" >
     update user_info
     set user_name = #{userName,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
       real_name = #{realName,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},

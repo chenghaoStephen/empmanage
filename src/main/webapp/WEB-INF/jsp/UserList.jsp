@@ -74,13 +74,13 @@
 </div><!--End wrapper-->
 
 <%@include file="footer.jsp"%>
-<script src="assets/js/common.js?version=20191119"></script>
+<script src="assets/js/common.js?version=20191120"></script>
 <!-- sidebar-menu js -->
 <script src="assets/js/sidebar-menu.js"></script>
 <!-- Custom scripts -->
 <script src="assets/js/app-script.js"></script>
 <!-- fb-index2 js -->
-<script src="assets/js/userlist.js?version=20191119"></script>
+<script src="assets/js/userlist.js?version=20191120"></script>
 
 <!--Data Tables js-->
 <script src="assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js"></script>

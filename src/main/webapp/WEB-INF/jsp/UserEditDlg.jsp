@@ -11,11 +11,15 @@
             <div class="modal-body">
                 <form id="UserEditForm" class="form-horizontal">
                     <div class="container">
+                        <div hidden>
+                            <input type="text" class="form-control" id="UserInfoUserIdEdit"
+                                   name="userId" readonly="readonly"/>
+                        </div>
                         <div class="row">
                             <div class="col-2"><label>用户名</label></div>
                             <div class="col-8">
                                 <input type="text" class="form-control" id="UserInfoUsernameEdit"
-                                       name="userName" readonly="readonly"/>
+                                       name="userName"/>
                             </div>
                         </div>
                         <div class="row">

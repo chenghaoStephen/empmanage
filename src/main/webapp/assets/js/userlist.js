@@ -229,6 +229,7 @@ function clickEvent(){
                 if (result.status == '0') {
                     var userDetail = result.data;
                     // 展示用户信息
+                    $("#UserInfoUserIdEdit").val(userDetail.userId);
                     $("#UserInfoUsernameEdit").val(userDetail.userName);
                     $("#UserInfoRealnameEdit").val(userDetail.realName);
                     if (userDetail.sex == '2') {

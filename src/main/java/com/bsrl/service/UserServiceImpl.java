@@ -94,8 +94,14 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public ServerResponse<UserInfo> updateUserInformation(UserInfo userInfo) {
-        // 根据username更新用户信息
-        int updateCount = userInfoMapper.updateByUserName(userInfo);
+//        // 根据username更新用户信息
+//        int updateCount = userInfoMapper.updateByUserName(userInfo);
+        ServerResponse<String> ServerResponse = checkValid(userInfo.getUserName());
+        if (!ServerResponse.isSuccess()) {
+            return ServerResponse.createByErrorMessage("用户名已存在");
+        }
+        // 根据userId更新用户信息
+        int updateCount = userInfoMapper.updateByPrimaryKey(userInfo);
         if (updateCount <= 0) {
             return ServerResponse.createByErrorMessage("更新个人信息失败");
         }

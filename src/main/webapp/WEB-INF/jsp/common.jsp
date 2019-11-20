@@ -37,7 +37,7 @@
                 <i class="zmdi zmdi-edit"></i> <span>编辑用户关系</span>
             </a>
         </li>
-        <li>
+        <li id="ManagerPannerListShow">
             <a href="/userList" class="waves-effect">
                 <i class="zmdi zmdi-info"></i> <span>用户录入编辑</span>
             </a>

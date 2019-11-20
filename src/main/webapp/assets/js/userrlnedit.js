@@ -65,6 +65,11 @@ $(function() {
         function (event) {
             event.preventDefault();
             // 校验
+            var userName = $("#UserInfoUsernameEdit").val();
+            if (userName == null || userName.length <= 0) {
+                Notiflix.Notify.Warning("用户名不能为空");
+                return;
+            }
             var realName = $("#UserInfoRealnameEdit").val();
             if (realName == null || realName.length <= 0) {
                 Notiflix.Notify.Warning("真实姓名不能为空");
@@ -251,6 +256,7 @@ function editnode() {
             if (result.status == '0') {
                 var userDetail = result.data;
                 // 展示用户信息
+                $("#UserInfoUserIdEdit").val(userDetail.userId);
                 $("#UserInfoUsernameEdit").val(userDetail.userName);
                 $("#UserInfoRealnameEdit").val(userDetail.realName);
                 if (userDetail.sex == '2') {

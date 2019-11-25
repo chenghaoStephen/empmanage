@@ -29,7 +29,7 @@
     <%@include file="UserCreateDlg.jsp"%>
     <%@include file="UserEditDlg.jsp"%>
     <style>
-        .js-edit,.js-detail {
+        .js-edit,.js-detail,.js-reset {
             line-height : 1;
         }
     </style>
@@ -63,7 +63,6 @@
                     <th style="text-align: center;">性别</th>
                     <th style="text-align: center;">电话</th>
                     <th style="text-align: center;">公司</th>
-                    <th style="text-align: center;">住址</th>
                     <th style="text-align: center;">身份</th>
                     <th style="text-align: center;">操作</th>
                 </tr>
@@ -80,7 +79,7 @@
 <!-- Custom scripts -->
 <script src="assets/js/app-script.js"></script>
 <!-- fb-index2 js -->
-<script src="assets/js/userlist.js?version=20191120"></script>
+<script src="assets/js/userlist.js?version=20191125"></script>
 
 <!--Data Tables js-->
 <script src="assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js"></script>

@@ -43,7 +43,7 @@
                             <div class="col-2"><label>电话</label></div>
                             <div class="col-8">
                                 <input type="text" class="form-control" id="UserInfoPhoneEdit"
-                                       name="phone" maxlength="20"/>
+                                       name="phone" oninput = "value=value.replace(/[^\d]/g,'')" maxlength="20"/>
                             </div>
                         </div>
                         <div class="row">
@@ -57,7 +57,7 @@
                             <div class="col-2"><label>银行卡号</label></div>
                             <div class="col-8">
                                 <input type="text" class="form-control" id="UserInfoBankAccountEdit"
-                                       name="bankAccount" maxlength="30"/>
+                                       name="bankAccount" oninput = "value=value.replace(/[^\d]/g,'')" maxlength="30"/>
                             </div>
                         </div>
                         <div class="row">

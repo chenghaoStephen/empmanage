@@ -16,7 +16,13 @@ $(function() {
             if (userName == null || userName.length <= 0) {
                 Notiflix.Notify.Warning("用户名不能为空");
                 return;
-            } else if (realName == null || realName.length <= 0) {
+            }
+            var uPattern = /^[a-zA-Z0-9_-]{4,16}$/;
+            if (!uPattern.test(userName)) {
+                Notiflix.Notify.Warning("用户名为4到16位数字、英文字母组合");
+                return;
+            }
+            if (realName == null || realName.length <= 0) {
                 Notiflix.Notify.Warning("真实姓名不能为空");
                 return;
             }
@@ -47,6 +53,12 @@ $(function() {
         function (event) {
             event.preventDefault();
             // 校验
+            var userName = $("#UserInfoUsernameEdit").val();
+            var uPattern = /^[a-zA-Z0-9_-]{4,16}$/;
+            if (!uPattern.test(userName)) {
+                Notiflix.Notify.Warning("用户名为4到16位数字、英文字母组合");
+                return;
+            }
             var realName = $("#UserInfoRealnameEdit").val();
             if (realName == null || realName.length <= 0) {
                 Notiflix.Notify.Warning("真实姓名不能为空");
@@ -161,25 +173,23 @@ function bindDataTable() {
             {data: 'sexCn'},
             {data: 'phone'},
             {data: 'company'},
-            {data: 'address'},
             {data: 'categoryCn'},
             {data: 'CZ'}
         ],
         columnDefs: [//自定义处理行数据，和行样式
             {"width": "10%", "targets": 0},
             {"width": "10%", "targets": 1},
-            {"width": "15%", "targets": 2},
-            {"width": "15%", "targets": 3},
-            {"width": "20%", "targets": 4},
-            {"width": "10%", "targets": 5},
+            {"width": "20%", "targets": 2},
+            {"width": "20%", "targets": 3},
+            {"width": "10%", "targets": 4},
             {
                 //   指定第四列，从0开始，0表示第一列，1表示第二列……
-                "width": "20%",
-                "targets": 6,
+                "width": "30%",
+                "targets": 5,
                 "render": function (data, type, row, meta) {
                     var rowIndex = meta.row;//获取到该行的rowIndex
                     var userId = row.userId;
-                    return '<span class="btn btn-primary btn-xs ml-3 js-edit" data-id="'+userId+'">编辑</span> <span class="btn btn-info btn-xs ml-3 js-detail" data-id="'+userId+'">详情</span>';
+                    return '<span class="btn btn-primary btn-xs ml-3 js-edit" data-id="'+userId+'">编辑</span> <span class="btn btn-primary btn-xs ml-3 js-reset" data-id="'+userId+'">重置密码</span> <span class="btn btn-info btn-xs ml-3 js-detail" data-id="'+userId+'">详情</span>';
                 }
             }
         ]
@@ -216,6 +226,28 @@ function clickEvent(){
             },
             error: function (e) {
                 Notiflix.Notify.Failure("获取用户信息失败");
+            }
+        });
+    }).on('click','.js-reset',function(){
+        var userId = $(this).attr('data-id');
+        // 重置用户密码
+        if (!window.confirm('重置后密码与用户名一致，确定吗?')) {
+            return;
+        }
+        // 调用接口，重置用户密码
+        $.ajax({
+            type: "POST",
+            url: "/user/resetPwd",
+            data: {"userId" : userId},
+            success: function (result) {
+                if (result.status == '0') {
+                    Notiflix.Notify.Success('操作成功');
+                } else {
+                    Notiflix.Notify.Failure(result.msg);
+                }
+            },
+            error: function (e) {
+                Notiflix.Notify.Failure("密码重置失败，请稍后再试");
             }
         });
     }).on('click','.js-edit',function(){

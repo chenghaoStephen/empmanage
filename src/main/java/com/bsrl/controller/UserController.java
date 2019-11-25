@@ -172,4 +172,25 @@ public class UserController {
         return ServerResponse.createBySuccess(userInfoVO);
     }
 
+    /**
+     * 重置用户密码
+     * @param userInfoQuery
+     * @return
+     */
+    @RequestMapping(value = "resetPwd", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<String> resetPwd(UserInfo userInfoQuery, HttpSession session) {
+        // 当前登录用户必须为管理员，才能执行操作
+        UserInfo userInfoLogin = (UserInfo)session.getAttribute(Const.CURRENT_USER);
+        if (!Const.Role.ROLE_ADMIN.equals(userInfoLogin.getCategory())) {
+            return ServerResponse.createByErrorMessage("对不起，您没有该权限");
+        }
+        // 获取用户信息
+        UserInfo userInfo = iUserService.selectByPrimaryKey(userInfoQuery.getUserId());
+        if (userInfo == null) {
+            return ServerResponse.createByErrorMessage("未查找到用户信息");
+        }
+        return iUserService.resetOriginalPwd(userInfo);
+    }
+
 }

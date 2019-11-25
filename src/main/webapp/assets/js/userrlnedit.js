@@ -33,7 +33,13 @@ $(function() {
             if (userName == null || userName.length <= 0) {
                 Notiflix.Notify.Warning("用户名不能为空");
                 return;
-            } else if (realName == null || realName.length <= 0) {
+            }
+            var uPattern = /^[a-zA-Z0-9_-]{4,16}$/;
+            if (!uPattern.test(userName)) {
+                Notiflix.Notify.Warning("用户名为4到16位数字、英文字母组合");
+                return;
+            }
+            if (realName == null || realName.length <= 0) {
                 Notiflix.Notify.Warning("真实姓名不能为空");
                 return;
             }
@@ -68,6 +74,11 @@ $(function() {
             var userName = $("#UserInfoUsernameEdit").val();
             if (userName == null || userName.length <= 0) {
                 Notiflix.Notify.Warning("用户名不能为空");
+                return;
+            }
+            var uPattern = /^[a-zA-Z0-9_-]{4,16}$/;
+            if (!uPattern.test(userName)) {
+                Notiflix.Notify.Warning("用户名为4到16位数字、英文字母组合");
                 return;
             }
             var realName = $("#UserInfoRealnameEdit").val();

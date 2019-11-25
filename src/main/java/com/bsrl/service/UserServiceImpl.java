@@ -134,4 +134,13 @@ public class UserServiceImpl implements IUserService {
         return userInfoMapper.selectByPrimaryKey(userId);
     }
 
+    @Override
+    public ServerResponse<String> resetOriginalPwd(UserInfo userInfo) {
+        userInfo.setPassword(MD5Util.MD5EncodeUtf8(userInfo.getUserName()));
+        int updateCount = userInfoMapper.updateByPrimaryKeySelective(userInfo);
+        if (updateCount <= 0) {
+            return ServerResponse.createByErrorMessage("密码重置失败");
+        }
+        return ServerResponse.createBySuccessMessage("密码重置成功");
+    }
 }

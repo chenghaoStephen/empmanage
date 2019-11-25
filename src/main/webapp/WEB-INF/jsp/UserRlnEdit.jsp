@@ -112,7 +112,7 @@
 <!-- Custom scripts -->
 <script src="assets/js/app-script.js"></script>
 
-<script src="assets/js/userrlnedit.js?version=20191120"></script>
+<script src="assets/js/userrlnedit.js?version=20191125"></script>
 <!--Data Tables js-->
 <script src="assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js"></script>
 <script src="assets/plugins/bootstrap-datatable/js/dataTables.bootstrap4.min.js"></script>

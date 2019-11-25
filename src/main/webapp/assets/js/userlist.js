@@ -189,7 +189,7 @@ function bindDataTable() {
                 "render": function (data, type, row, meta) {
                     var rowIndex = meta.row;//获取到该行的rowIndex
                     var userId = row.userId;
-                    return '<span class="btn btn-primary btn-xs ml-3 js-edit" data-id="'+userId+'">编辑</span> <span class="btn btn-primary btn-xs ml-3 js-reset" data-id="'+userId+'">重置密码</span> <span class="btn btn-info btn-xs ml-3 js-detail" data-id="'+userId+'">详情</span>';
+                    return '<span class="btn btn-primary btn-xs ml-1 js-edit" data-id="'+userId+'">编辑</span><span class="btn btn-primary btn-xs ml-1 js-reset" data-id="'+userId+'">重置密码</span><span class="btn btn-info btn-xs ml-1 js-detail" data-id="'+userId+'">详情</span>';
                 }
             }
         ]

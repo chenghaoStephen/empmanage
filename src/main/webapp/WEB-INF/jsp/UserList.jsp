@@ -22,7 +22,7 @@
     <link href="assets/plugins/bootstrap-datatable/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <link href="assets/plugins/bootstrap-datatable/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <!-- Custom Style-->
-    <link href="assets/css/app-style.css" rel="stylesheet"/>
+    <link href="assets/css/app-style.css?version=20191125" rel="stylesheet"/>
 
     <%@include file="UserInfoShowDlg.jsp"%>
     <%@include file="ModifyPassword.jsp"%>
@@ -73,7 +73,7 @@
 </div><!--End wrapper-->
 
 <%@include file="footer.jsp"%>
-<script src="assets/js/common.js?version=20191120"></script>
+<script src="assets/js/common.js?version=20191125"></script>
 <!-- sidebar-menu js -->
 <script src="assets/js/sidebar-menu.js"></script>
 <!-- Custom scripts -->

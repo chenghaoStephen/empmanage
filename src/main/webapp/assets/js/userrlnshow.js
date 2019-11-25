@@ -1,3 +1,4 @@
+var dragFlag = false;
 $(function() {
     $("#TopBarTitle").text("查看用户关系");
     // 手机端处理
@@ -91,7 +92,10 @@ function refreshRlnDiagram(datasource) {
     //     event.preventDefault();
     // });
 
-    oc.$chartContainer.on('click', '.node', function() {
+    oc.$chartContainer.on('mouseup', '.node', function() {
+        if (dragFlag) {
+            return;
+        }
         var $this = $(this);
         // 点击时，展示用户详情
         var userId = $this.attr('id');

@@ -34,8 +34,8 @@
       'direction': 't2b',
       'pan': false,
       'zoom': false,
-      'zoominLimit': 7,
-      'zoomoutLimit': 0.5
+      'zoominLimit': 3,
+      'zoomoutLimit': 0.25
     };
   };
   //
@@ -178,12 +178,12 @@
     //
     panStartHandler: function (e) {
       var $chart = $(e.delegateTarget);
-      if ($(e.target).closest('.node').length || (e.touches && e.touches.length > 1)) {
-        $chart.data('panning', false);
-        return;
-      } else {
+      // if ($(e.target).closest('.node').length || (e.touches && e.touches.length > 1)) {
+      //   $chart.data('panning', false);
+      //   return;
+      // } else {
         $chart.css('cursor', 'move').data('panning', true);
-      }
+      // }
       var lastX = 0;
       var lastY = 0;
       var lastTf = $chart.css('transform');
@@ -212,6 +212,7 @@
         if (!$chart.data('panning')) {
           return;
         }
+        dragFlag = true;
         var newX = 0;
         var newY = 0;
         if (!e.targetTouches) { // pand on desktop
@@ -245,6 +246,7 @@
     },
     //
     panEndHandler: function (e) {
+      dragFlag = false;
       if (e.data.chart.data('panning')) {
         e.data.chart.data('panning', false).css('cursor', 'default').off('mousemove');
       }

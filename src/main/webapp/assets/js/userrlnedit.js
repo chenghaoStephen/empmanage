@@ -1,4 +1,6 @@
 var userIdSet = [];
+var dragFlag = false;
+var orgchart;
 $(function() {
     $("#TopBarTitle").text("编辑用户关系");
     // 获取用户关系图数据
@@ -135,7 +137,7 @@ $(function() {
 
 function refreshRlnDiagram(data) {
     userIdSet = data.userIdSet;
-    var oc = $('#chart-container').orgchart({
+    orgchart = $('#chart-container').orgchart({
         'data' : data.datasource,
         'chartClass': 'edit-state',
         'nodeContent': 'title',
@@ -153,13 +155,13 @@ function refreshRlnDiagram(data) {
         .find('.node .edge').addClass('hidden');
 
     // 选中节点
-    oc.$chartContainer.on('click', '.node', function() {
+    orgchart.$chartContainer.on('click', '.node', function() {
         var $this = $(this);
         $('#selected-node').val($this.find('.content').text()).data('node', $this);
     });
 
     // 取消选择（点击空白处）
-    oc.$chartContainer.on('click', '.orgchart', function(event) {
+    orgchart.$chartContainer.on('click', '.orgchart', function(event) {
         if (!$(event.target).closest('.node').length) {
             $('#selected-node').val('').data('node', null);
         }
@@ -205,9 +207,6 @@ function addnode() {
 
 // 新建/选择用户后，添加到视图
 function addNewNodeToChart(userInfo) {
-    var oc = $('#chart-container').orgchart({
-        'nodeContent': 'title'
-    });
     var $node = $('#selected-node').data('node');
 
     var className = "frontend1";
@@ -235,11 +234,11 @@ function addNewNodeToChart(userInfo) {
     var hasChild = $node.parent().attr('colspan') > 0 ? true : false;
     if (!hasChild) {
         var rel = nodeVals.length > 1 ? '110' : '100';
-        oc.addChildren($node, nodeVals.map(function (item) {
+        orgchart.addChildren($node, nodeVals.map(function (item) {
             return { 'name': item.name, 'relationship': rel, "title": item.title, "className": item.className , "id": item.id};
         }));
     } else {
-        oc.addSiblings($node.closest('tr').siblings('.nodes').find('.node:first'), nodeVals.map(function (item) {
+        orgchart.addSiblings($node.closest('tr').siblings('.nodes').find('.node:first'), nodeVals.map(function (item) {
             return { 'name': item.name, 'relationship': '110', "title": item.title, "className": item.className, "id": item.id};
         }));
     }
@@ -251,7 +250,6 @@ function addNewNodeToChart(userInfo) {
 
 // 编辑用户
 function editnode() {
-    var oc = $('#chart-container').orgchart();
     var $node = $('#selected-node').data('node');
     if (!$node) {
         Notiflix.Notify.Warning("请选择一个节点");
@@ -316,7 +314,6 @@ function editnode() {
 
 // 移除用户
 function deletenode() {
-    var oc = $('#chart-container').orgchart();
     var $node = $('#selected-node').data('node');
     if (!$node) {
         Notiflix.Notify.Warning("请选择一个节点");
@@ -338,7 +335,7 @@ function deletenode() {
         },
         success: function (result) {
             if (result.status == '0') {
-                oc.removeNodes($node);
+                orgchart.removeNodes($node);
                 $('#selected-node').val('').data('node', null);
                 // Set中删除
                 var index = userIdSet.indexOf(userId);

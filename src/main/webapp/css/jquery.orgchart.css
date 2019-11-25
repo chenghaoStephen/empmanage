@@ -203,11 +203,11 @@
 .orgchart .node .title {
   box-sizing: border-box;
   padding: 2px;
-  width: 130px;
+  width: 60px;
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   font-weight: bold;
-  height: 20px;
+  height: 18px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

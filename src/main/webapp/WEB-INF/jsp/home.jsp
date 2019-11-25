@@ -19,11 +19,11 @@
     <!-- Sidebar CSS-->
     <link href="assets/css/sidebar-menu.css" rel="stylesheet"/>
     <!-- Custom Style-->
-    <link href="assets/css/app-style.css" rel="stylesheet"/>
+    <link href="assets/css/app-style.css?version=20191125" rel="stylesheet"/>
 
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/jquery.orgchart.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jquery.orgchart.css?version=20191125">
+    <link rel="stylesheet" href="css/style.css?version=20191125">
     <%@include file="UserInfoShowDlg.jsp"%>
     <%@include file="ModifyPassword.jsp"%>
     <%@include file="UserCreateDlg.jsp"%>
@@ -90,20 +90,20 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/notiflix-1.3.0.min.js" type="text/javascript"></script>
-<script src="assets/js/common.js?version=20191120"></script>
+<script src="assets/js/common.js?version=20191125"></script>
 <script>
     $(document).ready(function () {
         Notiflix.Notify.Init();
         Notiflix.Report.Init();
     });
 </script>
-<script type="text/javascript" src="js/jquery.orgchart.js"></script>
+<script type="text/javascript" src="js/jquery.orgchart.js?version=20191125"></script>
 <!-- sidebar-menu js -->
 <script src="assets/js/sidebar-menu.js"></script>
 <!-- Custom scripts -->
 <script src="assets/js/app-script.js"></script>
 
-<script src="assets/js/userrlnshow.js?version=20191120"></script>
+<script src="assets/js/userrlnshow.js?version=20191125"></script>
 
 </body>
 </html>
